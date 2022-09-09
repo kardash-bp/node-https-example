@@ -1,4 +1,4 @@
-# HTTPS, google OAuth 2.0
+# HTTPS, google OAuth 2.0 with Passport
 
 ## ssl cert command
 
