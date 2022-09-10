@@ -18,8 +18,7 @@ app.use(express.static('public'))
 app.use(
   session({
     secret: 'secret',
-    resave: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24, secure: true, httpOnly: true },
+    resave: false,
     saveUninitialized: true,
   })
 )
@@ -72,7 +71,6 @@ function checkLoggedIn(req, res, next) {
   }
   next()
 }
-
 app.get('/auth/google', passport.authenticate('google', { scope: ['email'] }))
 app.get(
   '/auth/google/callback',
@@ -90,17 +88,17 @@ app.get('/auth/logout', (req, res) => {
     res.redirect('/')
   })
 })
-app.get('/', (req, res) => {})
-app.get('/login', checkLoggedIn, (req, res) => {
-  res.send('login')
+app.get('/', (req, res) => {
+  res.send('home')
 })
+
 app.get('/secret', checkLoggedIn, (req, res) => {
-  console.log(req.session)
+  console.log(req.session.passport.user)
   res.send('Secret value is 42 ')
 })
 app.get('/test', checkLoggedIn, (req, res) => {
-  // console.log(req.user)
-  //console.log(req.session.passport.user)
+  console.log(req.user)
+
   res.send('Secret value is 42 :TEST PAGE')
 })
 module.exports = app

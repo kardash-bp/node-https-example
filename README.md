@@ -1,5 +1,9 @@
-# HTTPS, google OAuth 2.0 with Passport
+## HTTPS,
 
-## ssl cert command
+## google OAuth 2.0 with Passport,
 
-### req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 999
+## CI git actions,
+
+### ssl cert command
+
+> **req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 999**
